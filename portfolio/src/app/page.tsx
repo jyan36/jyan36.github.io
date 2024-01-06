@@ -10,11 +10,19 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 const messages = [
   'Web Developer.',
   'Composer and Arranger.',
-  'Math Enjoyer.',
+  'Math Enthusiast.',
   '1B Computer Science Student at the University of Waterloo.',
 ];
 
 export default function Home() {
+  const aboutSectionRef = useRef<HTMLDivElement | null>(null);
+
+  const handleAboutClick = () => {
+    if (aboutSectionRef.current) {
+      aboutSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const [isScrolled, setIsScrolled] = useState(false);
   const currentTime = new Date();
   const currentHour = currentTime.getHours();
@@ -92,7 +100,7 @@ export default function Home() {
         <div className="container mx-auto flex justify-between items-center">
           <a href="#" className="text-2xl font-bold">Jacob Yan</a>
           <nav className="space-x-12">
-            <a href="#about" className="hover:text-blue-500 font-bold">
+            <a href="#about" onClick={handleAboutClick} className="hover:text-blue-500 font-bold">
               About
             </a>
             <a href="#projects" className="hover:text-blue-500 font-bold">
@@ -144,9 +152,42 @@ export default function Home() {
       </div>
 
       {/* Basic about me, APIs like chess.com, Spotify, link resume, and experience levels in languages and frameworks */}
-      <section id="about" className="additional-section">
-        <h2 className="text-2xl font-bold mb-4">About Me</h2>
-      </section>
+      <section id="about" className="p-6 bg-blue-900 rounded shadow-md text-white" ref={aboutSectionRef}>
+      <div className ="p-6">
+          Need to add something blank here because when clicking the header "About", the header blocks the "About Me" text
+      </div>
+      <div className="container mx-auto mt-3 flex flex-col items-center">
+        <h1 className="text-3xl font-bold mb-1">About Me</h1>
+        <div className="container mx-auto mt-8 flex bg-white rounded shadow-md text-black">
+
+        <div className="w-full md:w-1/3 p-6">
+          <p>
+            Hello, I'm Jacob! Blah blah blah.
+            This is my About Me, my hobbies, and a welcome message.
+          </p>
+        </div>
+
+        <div className="w-full md:w-2/3 p-6">
+          <div className="mb-4">
+            <h3 className="text-lg font-semibold">Education</h3>
+            <p>University of Waterloo</p>
+            <p>Bachelor of Computer Science</p>
+            <p>Recipient of the $25,000 René Descartes Mathematics National Scholarship</p>
+            <p>GPA: 4.0/4.0 | CAV: 96.6%</p>
+          </div>
+          <div className="mb-4">
+            <h3 className="text-lg font-semibold">Technical Skills</h3>
+            <p>Languages: Python, Java, C, C++, JavaScript, HTML, CSS, Bash, Racket</p>
+            <p>Frameworks: React.js, Next.js, Tailwind CSS, Express.js, Node.js</p>
+            <p>Developer Tools: Git, GitHub, Linux, Figma, AWS</p>
+            <p>Libraries: NumPy, Matplotlib, SciPy, SymPy, Tkinter</p>
+          </div>
+        </div>
+        </div>
+        <div>Widgets here</div>
+      </div>
+
+    </section>
 
       <section id="projects" className="additional-section">
         <h2 className="text-2xl font-bold mb-4">Projects</h2>
